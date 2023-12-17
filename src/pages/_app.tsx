@@ -29,6 +29,8 @@ import Head from "next/head";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import ImgBackground from "../components/imgBackground";
+import Background from "../components/background";
+import { ModalProvider } from "../contexts/ModalContext";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -77,14 +79,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider appInfo={demoAppInfo} chains={chains} locale={locale}>
-        <Head>
-          <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />
-          <title>TEKIO STAKING</title>
-        </Head>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-        <ImgBackground />
+        <ModalProvider>
+          <Head>
+            <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />
+            <title>TEKIO STAKING</title>
+          </Head>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+          <ImgBackground />
+        </ModalProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

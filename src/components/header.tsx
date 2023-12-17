@@ -1,27 +1,40 @@
 /* eslint-disable @next/next/no-img-element */
-
 import { useState } from "react";
 import { CloseIcon, MobileMenuIcon } from "./SvgList";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const router = useRouter();
   return (
     <>
       <div className="w-full lg:flex hidden items-center justify-between h-[80px]">
         <div className="w-full border-[1px] border-white opacity-10" />
         <div className="px-20 lg:min-w-[1000px] w-full flex items-center justify-between z-0">
-          <div className="flex gap-[30px]">
-            <li
-              className="text-[14px] font-bold text-white uppercase border-r-2
-          border-white list-none border-opacity-10 pr-[30px]"
-            >
-              tokenomics
-            </li>
-            <li className="text-[14px] font-bold text-white uppercase list-none">
-              roadmap
-            </li>
+          <div className="flex gap-[30px] items-center justify-center">
+            <Link href={"/"}>
+              <li
+                className={`text-[14px] font-bold text-white uppercase border-r-2 duration-300 transition-all
+                border-white list-none border-opacity-10 pr-[30px] hover:text-yellow-200 ${
+                  router.pathname === "/" && "text-yellow-400"
+                }`}
+              >
+                home
+              </li>
+            </Link>
+            <Link href={"/stake"}>
+              <li
+                className={`text-[14px] font-bold text-white uppercase border-r-2 duration-300 transition-all
+                border-white list-none border-opacity-10 pr-[30px] hover:text-yellow-200 ${
+                  router.pathname === "/stake" && "text-yellow-400"
+                }`}
+              >
+                stake now
+              </li>
+            </Link>
           </div>
-          <div className="w-full flex items-center justify-end gap-[20px] z-1">
+          <div className="flex items-center justify-end gap-[20px] z-1">
             <img src="/imgs/opensea.png" alt="" className="cursor-pointer" />
             <img src="/imgs/magiceden.png" alt="" className="cursor-pointer" />
             <img src="/imgs/discord.png" alt="" className="cursor-pointer" />
@@ -61,14 +74,27 @@ const Header = () => {
           <p className="text-white text-[50px] font-bold uppercase mt-[102px]">
             Navigation
           </p>
-          <div className="flex flex-col items-center justify-center w-full gap-2">
-            <p className="text-white text-[20px] font-bold uppercase">
-              Tokenomics
-            </p>
+          <div className="flex flex-col items-center justify-center w-full gap-10 mt-10">
+            <Link href={"/"} onClick={() => setShowMenu(false)}>
+              <p
+                className={`text-white text-[30px] font-bold uppercase ${
+                  router.pathname === "/" && "text-yellow-400"
+                }`}
+              >
+                Home
+              </p>
+            </Link>
+
             <span className="w-[1px] h-[30px] bg-white bg-opacity-20" />
-            <p className="text-white text-[20px] font-bold uppercase">
-              Roadmap
-            </p>
+            <Link href={"/stake"} onClick={() => setShowMenu(false)}>
+              <p
+                className={`text-white text-[30px] font-bold uppercase ${
+                  router.pathname === "/stake" && "text-yellow-400"
+                }`}
+              >
+                stake
+              </p>
+            </Link>
           </div>
           <div className="w-full flex items-center justify-center gap-[20px] mt-[60px]">
             <img src="/imgs/opensea.png" alt="" className="cursor-pointer" />

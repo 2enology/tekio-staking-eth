@@ -1,58 +1,82 @@
 const Button = (props: { type: number }) => {
+  const getBackgroundColor = (type: number) => {
+    switch (type) {
+      case 0:
+        return "bg-[#EA6F75]";
+      case 1:
+        return "bg-[#61BAF3]";
+      case 2:
+        return "bg-[#D2D2D2]";
+      default:
+        return "bg-[#C591F2]";
+    }
+  };
+
+  const getBoxShadow = (type: number) => {
+    switch (type) {
+      case 0:
+        return {
+          boxShadow:
+            "0 0 6px #cc434a, inset 0px 9px 9px 0px #ffffff8c, inset 0 -5px 4px 0px #c03c44",
+        };
+      case 1:
+        return {
+          boxShadow:
+            "0 0 6px #2A88C1, inset 0px 9px 9px 0px #ffffffb3, inset 0 -5px 4px 0px #1677BA",
+        };
+      case 2:
+        return {
+          boxShadow:
+            "inset 0px 4px 4px 0px #ffffff, inset 0 -5px 4px 0px #0000004d",
+        };
+      default:
+        return {
+          boxShadow:
+            "0 0 6px #8A28ED, inset 0px 9px 9px 0px #ffffffb3, inset 0 -5px 4px 0px #9A49E7",
+        };
+    }
+  };
+
+  const getTextColor = (type: number) => {
+    switch (type) {
+      case 0:
+        return "text-[#871118]";
+      case 1:
+        return "text-[#0B47AD]";
+      case 2:
+        return "text-[#000000]";
+      default:
+        return "text-[#360B62]";
+    }
+  };
+
+  const getText = (type: number) => {
+    switch (type) {
+      case 0:
+        return "Mythic";
+      case 1:
+        return "Uncommon";
+      case 2:
+        return "Common";
+      default:
+        return "Rare";
+    }
+  };
+
   return (
     <div
-      className={`nftButton rounded-md ${
-        props.type === 0
-          ? "bg-[#EA6F75]"
-          : props.type === 1
-          ? "bg-[#61BAF3]"
-          : props.type === 2
-          ? "bg-[#D2D2D2]"
-          : "bg-[#C591F2]"
-      } cursor-pointer`}
-      style={
-        props.type === 0
-          ? {
-              boxShadow:
-                "0 0 6px #cc434a, inset 0px 9px 9px 0px #ffffff8c, inset 0 -5px 4px 0px #c03c44",
-            }
-          : props.type === 1
-          ? {
-              boxShadow:
-                "0 0 6px #2A88C1, inset 0px 9px 9px 0px #ffffffb3, inset 0 -5px 4px 0px #1677BA",
-            }
-          : props.type === 2
-          ? {
-              boxShadow:
-                "inset 0px 4px 4px 0px #ffffff, inset 0 -5px 4px 0px #0000004d",
-            }
-          : {
-              boxShadow:
-                "0 0 6px #8A28ED, inset 0px 9px 9px 0px #ffffffb3, inset 0 -5px 4px 0px #9A49E7",
-            }
-      }
+      className={`nftButton rounded-md ${getBackgroundColor(
+        props.type
+      )} cursor-pointer`}
+      style={getBoxShadow(props.type)}
     >
       <p
-        className={`${
-          props.type === 0
-            ? "text-[#871118]"
-            : props.type === 1
-            ? "text-[#0B47AD]"
-            : props.type === 2
-            ? "text-[#000000]"
-            : "text-[#360B62]"
-        } py-[7px] px-[10px] font-extrabold text-[12px] uppercase`}
-        style={{
-          textShadow: "0 1px 4px #00000040",
-        }}
+        className={`${getTextColor(
+          props.type
+        )} py-[7px] px-[10px] font-extrabold text-[12px] uppercase`}
+        style={{ textShadow: "0 1px 4px #00000040" }}
       >
-        {props.type === 0
-          ? "Mythic"
-          : props.type === 1
-          ? "Uncommon"
-          : props.type === 2
-          ? "common"
-          : "Rare"}
+        {getText(props.type)}
       </p>
     </div>
   );

@@ -1,33 +1,95 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { useState } from "react";
+import { CloseIcon, MobileMenuIcon } from "./SvgList";
+
 const Header = () => {
+  const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="w-full flex items-center justify-between h-[80px]">
-      <div className="w-full border-[1px] border-white opacity-10" />
-      <div className="px-20 min-w-[1000px] w-full flex items-center justify-between">
-        <div className="flex gap-[30px]">
-          <li
-            className="text-[14px] font-bold text-white uppercase border-r-2
+    <>
+      <div className="w-full lg:flex hidden items-center justify-between h-[80px]">
+        <div className="w-full border-[1px] border-white opacity-10" />
+        <div className="px-20 lg:min-w-[1000px] w-full flex items-center justify-between z-0">
+          <div className="flex gap-[30px]">
+            <li
+              className="text-[14px] font-bold text-white uppercase border-r-2
           border-white list-none border-opacity-10 pr-[30px]"
-          >
-            tokenomics
-          </li>
-          <li className="text-[14px] font-bold text-white uppercase list-none">
-            roadmap
-          </li>
+            >
+              tokenomics
+            </li>
+            <li className="text-[14px] font-bold text-white uppercase list-none">
+              roadmap
+            </li>
+          </div>
+          <div className="w-full flex items-center justify-end gap-[20px] z-1">
+            <img src="/imgs/opensea.png" alt="" className="cursor-pointer" />
+            <img src="/imgs/magiceden.png" alt="" className="cursor-pointer" />
+            <img src="/imgs/discord.png" alt="" className="cursor-pointer" />
+            <img src="/imgs/twitter.png" alt="" className="cursor-pointer" />
+          </div>
         </div>
-        <div className="w-full flex items-center justify-end gap-[20px]">
-          <img src="/imgs/opensea.png" alt="" />
+        <div className="w-full border-[1px] border-white opacity-10" />
+        <div className="flex items-center justify-center top-[24px] absolute left-0 right-0 -z-[3]">
+          <img
+            src="/imgs/logo.png"
+            className="w-[60px] h-[60px] lg:w-[106px] lg:h-[112px]"
+            alt=""
+          />
+        </div>
+      </div>
+      <div className="relative flex items-center justify-between w-full p-7 border-b-[1px] border-white border-opacity-10 lg:hidden">
+        <div
+          className="relative flex items-center justify-center cursor-pointer z-[1]"
+          onClick={() => setShowMenu(true)}
+        >
+          <MobileMenuIcon />
+        </div>
+        <div className="absolute left-0 right-0 z-0 flex items-center justify-center w-full">
+          <img
+            src="/imgs/logo.png"
+            alt=""
+            className="w-[48px] h-[50px] object-cover"
+          />
+        </div>
+        <div className="flex items-center gap-[20px] ">
           <img src="/imgs/magiceden.png" alt="" />
           <img src="/imgs/discord.png" alt="" />
-          <img src="/imgs/twitter.png" alt="" />
         </div>
       </div>
-      <div className="w-full border-[1px] border-white opacity-10" />
-      <div className="flex items-center justify-center top-[24px] absolute left-0 right-0">
-        <img src="/imgs/logo.png" className="" alt="" />
-      </div>
-    </div>
+      {showMenu && (
+        <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-start w-full bg-black bg-opacity-80 backdrop-blur-md z-[9999] flex-col">
+          <p className="text-white text-[50px] font-bold uppercase mt-[102px]">
+            Navigation
+          </p>
+          <div className="flex flex-col items-center justify-center w-full gap-2">
+            <p className="text-white text-[20px] font-bold uppercase">
+              Tokenomics
+            </p>
+            <span className="w-[1px] h-[30px] bg-white bg-opacity-20" />
+            <p className="text-white text-[20px] font-bold uppercase">
+              Roadmap
+            </p>
+          </div>
+          <div className="w-full flex items-center justify-center gap-[20px] mt-[60px]">
+            <img src="/imgs/opensea.png" alt="" className="cursor-pointer" />
+            <img src="/imgs/magiceden.png" alt="" className="cursor-pointer" />
+            <img src="/imgs/discord.png" alt="" className="cursor-pointer" />
+            <img src="/imgs/twitter.png" alt="" className="cursor-pointer" />
+          </div>
+          <div
+            className={`absolute bottom-[33px] text-white w-full flex items-center justify-center`}
+          >
+            <button
+              className="bg-transparent rounded-md px-[10px] py-[14px] border-[1px] border-white border-opacity-25 flex items-center justify-between gap-[9px] cursor-pointer"
+              onClick={() => setShowMenu(false)}
+            >
+              <CloseIcon />
+              <span className="text-white">CLOSE NAVIGATION</span>
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

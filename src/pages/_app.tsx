@@ -6,6 +6,7 @@ import {
   getDefaultWallets,
   connectorsForWallets,
   Locale,
+  darkTheme,
 } from "@rainbow-me/rainbowkit";
 import {
   argentWallet,
@@ -13,23 +14,13 @@ import {
   ledgerWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  base,
-  zora,
-  goerli,
-  polygonMumbai,
-} from "wagmi/chains";
+import { mainnet, polygon, goerli, polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import ImgBackground from "../components/imgBackground";
-import Background from "../components/background";
 import { ModalProvider } from "../contexts/ModalContext";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -78,7 +69,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { locale } = useRouter() as { locale: Locale };
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider appInfo={demoAppInfo} chains={chains} locale={locale}>
+      <RainbowKitProvider
+        appInfo={demoAppInfo}
+        chains={chains}
+        locale={locale}
+        modalSize="compact"
+        theme={darkTheme()}
+        coolMode
+      >
         <ModalProvider>
           <Head>
             <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />

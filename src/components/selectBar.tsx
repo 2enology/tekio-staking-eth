@@ -33,7 +33,7 @@ const SelectBar: React.FC<SelectBarProps> = ({
         </div>
         <div
           className="text-white uppercase font-extrabold border-[1px] border-[#7e7e7e] rounded-md px-[16px] py-[12px] text-[16px] cursor-pointer
-    bg-gradient-to-br from-[#18C8FF] to-[#DB01FF] w-full md:w-auto flex items-center justify-center"
+                      bg-gradient-to-br from-[#18C8FF] to-[#DB01FF] w-full md:w-auto flex items-center justify-center"
           onClick={stakeState ? openStakeModal : openClaimModal}
         >
           confirm and {stakeState ? "stake" : "unstake"}

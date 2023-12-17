@@ -70,7 +70,7 @@ const Header = () => {
         </div>
       </div>
       {showMenu && (
-        <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-start w-full bg-black bg-opacity-80 backdrop-blur-md z-[9999] flex-col">
+        <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-start w-full bg-black bg-opacity-80 backdrop-blur-md z-[9999] flex-col animate__animated animate__fadeIn">
           <p className="text-white text-[50px] font-bold uppercase mt-[102px]">
             Navigation
           </p>

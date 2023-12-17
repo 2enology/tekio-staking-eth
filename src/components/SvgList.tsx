@@ -14,6 +14,7 @@ export const CloseIcon = () => {
     </svg>
   );
 };
+
 export const PercentCircleIcon = () => {
   return (
     <svg
@@ -45,6 +46,7 @@ export const PercentCircleIcon = () => {
     </svg>
   );
 };
+
 export const MobileMenuIcon = () => {
   return (
     <svg
@@ -285,6 +287,7 @@ export const RoadmapLogoIcon = () => {
     </svg>
   );
 };
+
 export const SelectIcon = () => {
   return (
     <svg
@@ -301,6 +304,7 @@ export const SelectIcon = () => {
     </svg>
   );
 };
+
 export const WarningIcon = () => {
   return (
     <svg

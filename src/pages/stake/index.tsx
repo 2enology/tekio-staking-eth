@@ -62,7 +62,7 @@ const Stake = () => {
   }, [data4Func]);
 
   return (
-    <div className="flex items-center justify-center w-full mt-[103px] flex-col gap-[35px] px-3 duration-300 transition-all relative animate__animated animate__fadeIn">
+    <div className="flex items-center justify-center w-full mt-[49px] md:mt-[103px] flex-col gap-[35px] px-3 duration-300 transition-all relative animate__animated animate__fadeIn min-h-screen">
       <div className="md:w-[600px] w-full p-[32px] flex flex-col items-center justify-start gap-[20px] bg-black bg-opacity-30 rounded-md">
         <div className="flex items-center justify-start">
           <WalletConnectBtn />
@@ -146,6 +146,7 @@ const Stake = () => {
       />
       <ClaimModal />
       <StakeModal />
+      <div className="fixed top-0 right-0 left-0 bottom-0 bg-black bg-opacity-50 backdrop-blur-sm z-[-9997]" />
     </div>
   );
 };

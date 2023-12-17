@@ -11,17 +11,13 @@ import ImgBackground from "../components/imgBackground";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex flex-col items-center ">
-      <Header />
+    <div className="flex flex-col items-center transition-all duration-300">
       <div className="w-full max-w-[1000px] flex mt-[172px] items-center justify-center p-3 relative flex-col">
         <WalletConnectBtn />
         <Detail />
         <Tokenomics />
         <RoadMap />
       </div>
-      <Footer />
-      {/* <Background /> */}
-      <ImgBackground />
     </div>
   );
 };

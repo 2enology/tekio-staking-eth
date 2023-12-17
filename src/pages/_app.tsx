@@ -26,6 +26,9 @@ import {
 import { publicProvider } from "wagmi/providers/public";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import ImgBackground from "../components/imgBackground";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -78,7 +81,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />
           <title>TEKIO STAKING</title>
         </Head>
+        <Header />
         <Component {...pageProps} />
+        <Footer />
+        <ImgBackground />
       </RainbowKitProvider>
     </WagmiConfig>
   );

@@ -16,6 +16,7 @@ module.exports = {
         progress: "0 3px 13px 0 rgba(99, 170, 227, 0.45)",
         walletBtn: "0 1px 1px 0 rgba(0, 25, 66, 0.4)",
         roadmapImg: "0 30px 66px 0 #1E3C34A9",
+        nftImgShadow: "shadow 0px 4px 0px 0px #ffffff4d",
       },
       textShadow: {
         walletBtn: "0 1px 1px 0 rgba(0, 25, 66, 0.4)",

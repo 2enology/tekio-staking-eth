@@ -62,8 +62,8 @@ const Stake = () => {
   }, [data4Func]);
 
   return (
-    <div className="flex items-center justify-center w-full mt-[103px] flex-col gap-[35px] px-3 duration-300 transition-all relative">
-      <div className="md:w-[600px] w-full p-[32px] flex flex-col items-center justify-start gap-[24px] bg-white bg-opacity-5 rounded-md">
+    <div className="flex items-center justify-center w-full mt-[103px] flex-col gap-[35px] px-3 duration-300 transition-all relative animate__animated animate__fadeIn">
+      <div className="md:w-[600px] w-full p-[32px] flex flex-col items-center justify-start gap-[20px] bg-black bg-opacity-30 rounded-md">
         <div className="flex items-center justify-start">
           <WalletConnectBtn />
         </div>
@@ -92,13 +92,13 @@ const Stake = () => {
           </div>
         </div>
         <button
-          className="px-3 py-[16px] border-[1px] border-white border-opacity-30 rounded-md text-white font-bold text-[16px] uppercase cursor-pointer"
+          className="px-3 py-[12px] border-[1px] border-white border-opacity-30 rounded-md text-white font-bold text-[16px] uppercase cursor-pointer"
           onClick={openClaimModal}
         >
           claim your rewards
         </button>
       </div>
-      <div className="md:w-[600px] w-full flex items-center justify-center p-[3px] bg-white bg-opacity-5 rounded-md">
+      <div className="md:w-[600px] w-full flex items-center justify-center p-[3px] bg-black bg-opacity-30 rounded-md">
         <div
           className={`w-1/2 py-[10px] font-extrabold uppercase flex items-center justify-center rounded-md cursor-pointer ${
             !showStakedNft ? "bg-white text-black" : "transparent text-white"

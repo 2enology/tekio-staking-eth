@@ -20,13 +20,13 @@ const NftCard: React.FC<NftCardProps> = ({
 }) => {
   return (
     <div
-      className={`w-full flex flex-col bg-white bg-opacity-5 rounded-md p-[10px] ${
+      className={`w-full flex flex-col bg-black bg-opacity-30 rounded-md p-[10px] ${
         isSelected ? "border-[2px] border-[#2CE6FF]" : ""
       }`}
     >
       <div className="relative shadow-nftImgShadow">
         <img src={imgUrl} className="relative w-full rounded-md" alt="" />
-        <div className="absolute top-[10px] left-[10px] py-[7px] px-[10px] bg-black bg-opacity-25 rounded-md text-[14px] font-extrabold text-white">
+        <div className="absolute top-[10px] left-[10px] py-[7px] px-[10px] bg-black bg-opacity-30 rounded-md text-[14px] font-extrabold text-white">
           #{tokenId}
         </div>
       </div>

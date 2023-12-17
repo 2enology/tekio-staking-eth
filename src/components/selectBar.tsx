@@ -16,16 +16,16 @@ const SelectBar: React.FC<SelectBarProps> = ({
 
   return (
     <div className="w-full max-w-[1446px]">
-      <div className="w-full p-[16px] bg-black rounded-md flex flex-col md:flex-row gap-2 items-center justify-between relative z-[50]">
+      <div className="w-full p-[16px] bg-black rounded-xl flex flex-col md:flex-row gap-2 items-center justify-between relative z-[50]">
         <div className="flex items-center justify-center gap-[5px]">
           <div
-            className="text-white rounded-md border-[1px] border-white border-opacity-25 px-[16px] py-[12px] uppercase cursor-pointer"
+            className="text-white rounded-md border-2 border-white border-opacity-20 px-[16px] py-[12px] uppercase cursor-pointer"
             onClick={() => selectAll()}
           >
             select all
           </div>
           <div
-            className="text-white rounded-md border-[1px] border-white border-opacity-25 px-[16px] py-[12px] uppercase cursor-pointer"
+            className="text-white rounded-md border-2 border-white border-opacity-20 px-[16px] py-[12px] uppercase cursor-pointer"
             onClick={() => clearAll()}
           >
             clear

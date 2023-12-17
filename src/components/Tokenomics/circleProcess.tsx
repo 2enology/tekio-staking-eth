@@ -20,7 +20,7 @@ const CircleProcess = () => {
           md:rounded-tl-[15px] md:rounded-tr-[20px] md:rounded-br-[15px] md:rounded-bl-[20px]
           rounded-tl-[6.66px] rounded-tr-[8.87px] rounded-br-[4.44px] rounded-bl-[8.87px]  z-[100]`}
             style={
-              width > 640
+              width > 760
                 ? {
                     top: item.position.y,
                     left: item.position.x + "%",

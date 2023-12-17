@@ -24,7 +24,7 @@ const NftCard: React.FC<NftCardProps> = ({
         isSelected ? "border-[2px] border-[#2CE6FF]" : ""
       }`}
     >
-      <div className="relative shadow-nftImgShadow">
+      <div className="relative shadow-nftImgShadow min-h-[340px]">
         <img src={imgUrl} className="relative w-full rounded-md" alt="" />
         <div className="absolute top-[10px] left-[10px] py-[7px] px-[10px] bg-black bg-opacity-30 rounded-md text-[14px] font-extrabold text-white">
           #{tokenId}

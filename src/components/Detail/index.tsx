@@ -8,8 +8,8 @@ const Detail = () => {
   const left = 35 * (1 - Math.cos(((30 - alpha) * Math.PI) / 180));
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between w-full gap-6 mt-[121px]">
-      <div className="flex flex-col items-center justify-start w-full p-8 bg-black rounded-md bg-opacity-30 gap-[16px]">
+    <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between w-full gap-6 md:mt-[121px] mt-[27px]">
+      <div className="flex flex-col items-center justify-start w-full p-8 xl:bg-black bg-white rounded-md xl:bg-opacity-30  bg-opacity-5 gap-[16px]">
         <div className="w-full text-left">
           <h1 className="text-white text-[20px] font-bold uppercase text-left">
             Distributed Tekio tkn
@@ -31,7 +31,7 @@ const Detail = () => {
         </div>
         <ProgressBar percent={30} />
       </div>
-      <div className="flex flex-col items-center justify-start w-full p-8 bg-black rounded-md bg-opacity-30 gap-[16px]">
+      <div className="flex flex-col items-center justify-start w-full p-8 xl:bg-black bg-white rounded-md xl:bg-opacity-30  bg-opacity-5 gap-[16px]">
         <div className="w-full text-left">
           <h1 className="text-white text-[20px] font-bold uppercase text-left">
             Total Staked NFTs

@@ -1,6 +1,6 @@
 const Background = () => {
   return (
-    <div className="2xl:w-[1606px] xl:w-[1000px] absolute mt-[160px]">
+    <div className="2xl:w-[1606px] xl:w-[1000px] absolute">
       <div className="relative ">
         <div
           className="absolute w-[757px] h-[757px] top-[724px] left-[69px] bg-[#006C87]

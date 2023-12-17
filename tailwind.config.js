@@ -12,6 +12,13 @@ module.exports = {
     extend: {
       boxShadow: {
         custom: "0 2px 1px #ffffffB3",
+        token: "3px 2px 2px 2px #0000006e",
+        progress: "0 3px 13px 0 rgba(99, 170, 227, 0.45)",
+        walletBtn: "0 1px 1px 0 rgba(0, 25, 66, 0.4)",
+        roadmapImg: "0 30px 66px 0 #1E3C34A9",
+      },
+      textShadow: {
+        walletBtn: "0 1px 1px 0 rgba(0, 25, 66, 0.4)",
       },
     },
   },

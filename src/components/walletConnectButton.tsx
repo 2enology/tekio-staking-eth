@@ -43,10 +43,16 @@ const WalletConnectBtn = () => {
                     <button
                       onClick={openConnectModal}
                       type="button"
-                      className="text-white text-[18px] font-bold uppercase bg-gradient-to-r from-[#667EEA] to-[#764BA2] px-[24px] py-[16px] rounded-md
+                      className="text-white text-[18px] font-bold uppercase bg-gradient-to-r from-[#667EEA] to-[#764BA2] px-[24px] py-[16px] rounded-md border-b-[3px] border-t-[1px] border-black border-opacity-30
                    "
                     >
-                      Connect Wallet
+                      <p
+                        style={{
+                          textShadow: "0 1px 0px rgba(0, 25, 66, 0.4)",
+                        }}
+                      >
+                        Connect Wallet
+                      </p>
                     </button>
                   );
                 }
@@ -64,25 +70,25 @@ const WalletConnectBtn = () => {
                     <button
                       onClick={openChainModal}
                       type="button"
-                      className="flex items-center bg-white px-5 rounded-lg py-3 font-bold
-                      uppercase"
+                      className="flex items-center px-5 py-3 font-bold uppercase bg-white rounded-lg"
                     >
                       {chain.hasIcon && (
                         <div
                           style={{
                             background: chain.iconBackground,
-                            width: 12,
-                            height: 12,
+                            width: 20,
+                            height: 20,
                             borderRadius: 999,
                             overflow: "hidden",
                             marginRight: 4,
                           }}
+                          className="flex items-center justify-center"
                         >
                           {chain.iconUrl && (
                             <img
                               alt={chain.name ?? "Chain icon"}
                               src={chain.iconUrl}
-                              style={{ width: 12, height: 12 }}
+                              style={{ width: 20, height: 20 }}
                             />
                           )}
                         </div>

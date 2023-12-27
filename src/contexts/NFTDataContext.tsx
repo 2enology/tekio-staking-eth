@@ -117,31 +117,34 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
     if (address) {
       const data = await getStakedNFTDatas(address);
 
-      const propertiyArrary = await Promise.all(
-        data.map(async (item: number) => {
-          const data = await fetchData(IPFS_DATA_URL + item + ".json");
+      console.log("Data", data.isError);
+      if (!data.isError) {
+        const propertiyArrary = await Promise.all(
+          data.map(async (item: number) => {
+            const data = await fetchData(IPFS_DATA_URL + item + ".json");
 
-          const cid = data.image.split("//")[1];
-          const finalUrl = `${IPFS_BASE_URL}${cid}`;
+            const cid = data.image.split("//")[1];
+            const finalUrl = `${IPFS_BASE_URL}${cid}`;
 
-          // const filteredResults = Object.keys(data.attributes).filter((key) => {
-          //   return (
-          //     data.attributes[key].trait_type === "Hair down" &&
-          //     (data.attributes[key].value.includes("robotic") ||
-          //       data.attributes[key].value.includes("baseball") ||
-          //       data.attributes[key].value.includes("halo"))
-          //   );
-          // });
+            // const filteredResults = Object.keys(data.attributes).filter((key) => {
+            //   return (
+            //     data.attributes[key].trait_type === "Hair down" &&
+            //     (data.attributes[key].value.includes("robotic") ||
+            //       data.attributes[key].value.includes("baseball") ||
+            //       data.attributes[key].value.includes("halo"))
+            //   );
+            // });
 
-          return {
-            tokenId: data.edition,
-            imgUrl: finalUrl,
-            isSpecial: false,
-          };
-        })
-      );
+            return {
+              tokenId: data.edition,
+              imgUrl: finalUrl,
+              isSpecial: false,
+            };
+          })
+        );
 
-      setStakedNFTs(propertiyArrary);
+        setStakedNFTs(propertiyArrary);
+      }
     }
   };
 
@@ -157,9 +160,9 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
 
       setTotalClaimedTokenAmount(
         Number(
-          parseFloat(ethers.formatEther(claimedTokenAmount.toString())).toFixed(
-            2
-          )
+          parseFloat(
+            ethers.utils.formatEther(claimedTokenAmount.toString())
+          ).toFixed(2)
         )
       );
       const claimableState = await boxClaimable(address);

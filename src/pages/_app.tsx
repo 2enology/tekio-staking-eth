@@ -27,10 +27,8 @@ import { ToastContainer } from "react-toastify";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
-    mainnet,
     goerli,
     polygon,
-    polygonMumbai,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
   ],
   [publicProvider()]

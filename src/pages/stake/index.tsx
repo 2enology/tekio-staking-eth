@@ -124,7 +124,7 @@ const Stake = () => {
             setShowPage("unstake"), setSelectedNFTs([]), setData4Func([])
           )}
         >
-          staked {`(${walletNFTs === undefined ? "0" : stakedNFTs?.length})`}
+          staked {`(${stakedNFTs === undefined ? "0" : stakedNFTs?.length})`}
         </div>
         <div
           className={`w-1/2 py-[10px] font-extrabold uppercase flex items-center justify-center rounded-md cursor-pointer ${

@@ -47,7 +47,7 @@ const Detail = () => {
               <p className="md:text-[20px] text-[14px] text-white font-bold">{`4,000,000,000`}</p>
             </div>
           </div>
-          <ProgressBar percent={30} />
+          <ProgressBar percent={totalClaimedTokenAmount / 40000000} />
         </div>
         <div className="flex flex-col items-center justify-start w-full md:p-8 p-[16px] xl:bg-black bg-white rounded-md xl:bg-opacity-30  bg-opacity-5 gap-[16px]">
           <div className="w-full text-left">

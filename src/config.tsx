@@ -2,6 +2,8 @@
 export const POLYGON_CHAIN = "0x89";
 export const GOERLI_CHAIN = "0x5";
 
+export const PROJECT_ID = "0eba5effc3650d504fc5ecc65aabbaf2";
+
 export const TEKINFT_MINTCONTRACT_ADDR =
   "0x125B88E6335C3D277E24613acE3572823D7f7C2b";
 export const STAKINGCONTRACT_ADDR =

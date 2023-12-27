@@ -24,6 +24,7 @@ import ProgressBar from "../components/progressBar";
 import { Layout } from "../components/Layout/layout";
 import GetNFTDataProvider from "../contexts/NFTDataContext";
 import { ToastContainer } from "react-toastify";
+import { PROJECT_ID } from "../config";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -34,7 +35,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [publicProvider()]
 );
 
-const projectId = "0eba5effc3650d504fc5ecc65aabbaf2";
+const projectId = PROJECT_ID;
 
 const { wallets } = getDefaultWallets({
   appName: "RainbowKit demo",

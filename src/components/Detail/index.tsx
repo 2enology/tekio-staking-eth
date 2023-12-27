@@ -101,7 +101,7 @@ const Detail = () => {
         </div>
       </div>
       <div className="flex items-center justify-center w-full">
-        <img src="/imgs/homebox.png" alt="" />
+        <img src="/imgs/boxes.png" alt="" />
       </div>
     </div>
   );

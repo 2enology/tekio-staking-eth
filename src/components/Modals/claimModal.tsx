@@ -12,7 +12,7 @@ const ClaimModal = () => {
       className={`fixed z-50 w-full h-full min-h-screen top-0 backdrop-blur-sm bg-black/70 flex items-center justify-center animate__animated animate__fadeIn`}
     >
       <CSSTransition timeout={1000} classNames="fade">
-        <div className="flex items-center justify-center bg-black rounded-md p-[32px] flex-col gap-[32px]  animate__animated animate__fadeInDown">
+        <div className="flex items-center justify-center bg-black rounded-md p-[32px] flex-col gap-[32px]  animate__animated animate__fadeInDown animate__faster">
           <WarningIcon />
           <div className="flex items-center justify-center gap-[6px] flex-col text-center">
             <p className="text-white uppercase text-[18px] font-semibold">

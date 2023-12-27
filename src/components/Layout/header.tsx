@@ -1,17 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
-import { CloseIcon, MobileMenuIcon } from "./SvgList";
+import { CloseIcon, MobileMenuIcon } from "../SvgList";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import WalletConnectBtn from "../walletConnectButton";
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
   return (
     <>
-      <div className="w-full lg:flex hidden items-center justify-between h-[80px]">
+      <div className="w-full xl:flex hidden items-center justify-between h-[80px]">
         <div className="w-full border-[1px] border-white opacity-10" />
-        <div className="px-20 lg:min-w-[1000px] w-full flex items-center justify-between z-0">
+        <div className="px-20 xl:min-w-[1200px] w-full flex items-center justify-between z-0">
           <div className="flex gap-[30px] items-center justify-center">
             <Link href={"/"}>
               <li
@@ -34,12 +35,7 @@ const Header = () => {
               </li>
             </Link>
           </div>
-          <div className="flex items-center justify-end gap-[20px] z-1">
-            <img src="/imgs/opensea.png" alt="" className="cursor-pointer" />
-            <img src="/imgs/magiceden.png" alt="" className="cursor-pointer" />
-            <img src="/imgs/discord.png" alt="" className="cursor-pointer" />
-            <img src="/imgs/twitter.png" alt="" className="cursor-pointer" />
-          </div>
+          <WalletConnectBtn />
         </div>
         <div className="w-full border-[1px] border-white opacity-10" />
         <div className="flex items-center justify-center top-[24px] absolute left-0 right-0 -z-[3]">
@@ -50,7 +46,7 @@ const Header = () => {
           />
         </div>
       </div>
-      <div className="relative flex items-center justify-between w-full p-7 border-b-[1px] border-white border-opacity-10 lg:hidden">
+      <div className="relative flex items-center justify-between w-full p-7 border-b-[1px] border-white border-opacity-10 xl:hidden">
         <div
           className="relative flex items-center justify-center cursor-pointer z-[1]"
           onClick={() => setShowMenu(true)}
@@ -70,7 +66,7 @@ const Header = () => {
         </div>
       </div>
       {showMenu && (
-        <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-start w-full bg-black bg-opacity-80 backdrop-blur-md z-[9999] flex-col animate__animated animate__fadeIn">
+        <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-start w-full bg-black bg-opacity-80 backdrop-blur-md z-[9999] flex-col animate__animated animate__fadeIn animate__faster  ">
           <p className="text-white text-[50px] font-bold uppercase mt-[102px]">
             Navigation
           </p>

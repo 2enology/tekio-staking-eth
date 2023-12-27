@@ -1,14 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { CSSTransition } from "react-transition-group";
 import "animate.css";
 
 const WalletConnectBtn = () => {
   return (
     <div className="flex items-center justify-center flex-col gap-[32px] animate__animated animate__fadeIn">
-      {/* <h1 className="text-white text-[24px] font-extrabold uppercase">
-        connect your wallet
-      </h1> */}
       <ConnectButton.Custom>
         {({
           account,
@@ -45,8 +41,8 @@ const WalletConnectBtn = () => {
                     <button
                       onClick={openConnectModal}
                       type="button"
-                      className="text-white text-[18px] font-bold uppercase bg-gradient-to-r from-[#667EEA] to-[#764BA2] px-[24px] py-[11px] rounded-md border-b-[3px] border-t-[1px] border-black border-opacity-30
-                   "
+                      className="text-white text-[18px] font-bold uppercase bg-gradient-to-r from-[#667EEA] to-[#764BA2] px-[24px] py-[11px]
+                       rounded-md border-b-[3px] border-t-[1px] border-black border-opacity-30"
                     >
                       <p
                         style={{
@@ -72,20 +68,11 @@ const WalletConnectBtn = () => {
                     <button
                       onClick={openChainModal}
                       type="button"
-                      className="flex items-center px-5 py-3 font-bold uppercase bg-white rounded-lg"
+                      className="text-white text-[18px] font-bold uppercase bg-gradient-to-r from-[#667EEA] to-[#764BA2] px-[13px] py-[10px]
+                      rounded-md border-b-[3px] border-t-[1px] border-black border-opacity-30"
                     >
                       {chain.hasIcon && (
-                        <div
-                          style={{
-                            background: chain.iconBackground,
-                            width: 20,
-                            height: 20,
-                            borderRadius: 999,
-                            overflow: "hidden",
-                            marginRight: 4,
-                          }}
-                          className="flex items-center justify-center"
-                        >
+                        <div className="">
                           {chain.iconUrl && (
                             <img
                               alt={chain.name ?? "Chain icon"}
@@ -95,18 +82,16 @@ const WalletConnectBtn = () => {
                           )}
                         </div>
                       )}
-                      {chain.name}
                     </button>
 
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className="text-white text-[18px] font-bold uppercase"
+                      className="text-white text-[18px] font-bold uppercase bg-gradient-to-r from-[#667EEA] to-[#764BA2] px-[24px] py-[11px] rounded-md border-b-[3px] border-t-[1px] border-black border-opacity-30"
                     >
-                      {account.displayName}
-                      {account.displayBalance
-                        ? ` (${account.displayBalance})`
-                        : ""}
+                      {account.displayName.slice(0, 4) +
+                        "..." +
+                        account.displayName.slice(-4)}
                     </button>
                   </div>
                 );

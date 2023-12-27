@@ -1,65 +1,43 @@
-const Button = (props: { type: number }) => {
-  const getBackgroundColor = (type: number) => {
+const Button = (props: { type: boolean }) => {
+  const getBackgroundColor = (type: boolean) => {
     switch (type) {
-      case 0:
+      case true:
         return "bg-[#EA6F75]";
-      case 1:
+      case false:
         return "bg-[#61BAF3]";
-      case 2:
-        return "bg-[#D2D2D2]";
-      default:
-        return "bg-[#C591F2]";
     }
   };
 
-  const getBoxShadow = (type: number) => {
+  const getBoxShadow = (type: boolean) => {
     switch (type) {
-      case 0:
+      case true:
         return {
           boxShadow:
             "0 0 6px #cc434a, inset 0px 9px 9px 0px #ffffff8c, inset 0 -5px 4px 0px #c03c44",
         };
-      case 1:
+      case false:
         return {
           boxShadow:
             "0 0 6px #2A88C1, inset 0px 9px 9px 0px #ffffffb3, inset 0 -5px 4px 0px #1677BA",
         };
-      case 2:
-        return {
-          boxShadow:
-            "inset 0px 4px 4px 0px #ffffff, inset 0 -5px 4px 0px #0000004d",
-        };
-      default:
-        return {
-          boxShadow:
-            "0 0 6px #8A28ED, inset 0px 9px 9px 0px #ffffffb3, inset 0 -5px 4px 0px #9A49E7",
-        };
     }
   };
 
-  const getTextColor = (type: number) => {
+  const getTextColor = (type: boolean) => {
     switch (type) {
-      case 0:
+      case true:
         return "text-[#871118]";
-      case 1:
+      case false:
         return "text-[#0B47AD]";
-      case 2:
-        return "text-[#000000]";
-      default:
-        return "text-[#360B62]";
     }
   };
 
-  const getText = (type: number) => {
+  const getText = (type: boolean) => {
     switch (type) {
-      case 0:
-        return "Mythic";
-      case 1:
-        return "Uncommon";
-      case 2:
-        return "Common";
-      default:
-        return "Rare";
+      case false:
+        return "Normal";
+      case true:
+        return "Special";
     }
   };
 
@@ -67,7 +45,7 @@ const Button = (props: { type: number }) => {
     <div
       className={`nftButton rounded-md ${getBackgroundColor(
         props.type
-      )} cursor-pointer`}
+      )} cursor-default `}
       style={getBoxShadow(props.type)}
     >
       <p

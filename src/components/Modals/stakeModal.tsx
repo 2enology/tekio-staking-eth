@@ -16,7 +16,7 @@ const StakeModal = () => {
     <div
       className={`fixed z-50 w-full h-full min-h-screen top-0 backdrop-blur-sm bg-black/70 flex items-center justify-center animate__fadeIn animate__animated`}
     >
-      <div className="flex items-center justify-center bg-black rounded-md p-[32px] flex-col gap-[32px] animate__animated animate__fadeInDown">
+      <div className="flex items-center justify-center bg-black rounded-md p-[32px] flex-col gap-[32px] animate__animated animate__fadeInDown animate__faster">
         <div className="flex items-center justify-start gap-[6px] flex-col text-center">
           <p className="text-white uppercase text-[18px] font-semibold">
             choose the stake period

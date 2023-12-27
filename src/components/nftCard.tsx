@@ -4,7 +4,7 @@ import Button from "./button";
 import CheckBox from "./checkBox";
 
 type NftCardProps = {
-  type: number;
+  type: boolean;
   tokenId: number;
   imgUrl: string;
   isSelected: boolean;
@@ -26,12 +26,12 @@ const NftCard: React.FC<NftCardProps> = ({
     >
       <div className="relative shadow-nftImgShadow min-h-[340px]">
         <img src={imgUrl} className="relative w-full rounded-md" alt="" />
-        <div className="absolute top-[10px] left-[10px] py-[7px] px-[10px] bg-black bg-opacity-30 rounded-md text-[14px] font-extrabold text-white">
+        <div className="absolute top-[10px] left-[10px] py-[7px] px-[10px] bg-black bg-opacity-80 rounded-md text-[14px] font-extrabold text-white">
           #{tokenId}
         </div>
       </div>
-      <div className="flex items-center justify-between w-full p-[20px]">
-        <Button type={type} />
+      <div className="flex items-center justify-end w-full p-[20px]">
+        {/* <Button type={type} /> */}
         <CheckBox
           isSelected={isSelected}
           tokenId={tokenId}

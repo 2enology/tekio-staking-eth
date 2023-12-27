@@ -18,10 +18,12 @@ import { mainnet, polygon, goerli, polygonMumbai } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import ImgBackground from "../components/imgBackground";
 import { ModalProvider } from "../contexts/ModalContext";
+import ProgressBar from "../components/progressBar";
+import { Layout } from "../components/Layout/layout";
+import GetNFTDataProvider from "../contexts/NFTDataContext";
+import { ToastContainer } from "react-toastify";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -77,16 +79,20 @@ function MyApp({ Component, pageProps }: AppProps) {
         theme={darkTheme()}
         coolMode
       >
-        <ModalProvider>
-          <Head>
-            <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />
-            <title>TEKIO STAKING</title>
-          </Head>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
-          <ImgBackground />
-        </ModalProvider>
+        <ToastContainer style={{ fontSize: 14 }} />
+        <GetNFTDataProvider>
+          <ModalProvider>
+            <Head>
+              <link rel="icon" type="image/x-icon" href="/imgs/logo.png" />
+              <title>TEKIO STAKING</title>
+            </Head>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+            <ImgBackground />
+            <ProgressBar />
+          </ModalProvider>
+        </GetNFTDataProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

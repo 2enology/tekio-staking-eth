@@ -47,7 +47,6 @@ const Detail = () => {
               <p className="md:text-[20px] text-[14px] text-white font-bold">{`4,000,000,000`}</p>
             </div>
           </div>
-          <ProgressBar percent={totalClaimedTokenAmount / 40000000} />
         </div>
         <div className="flex flex-col items-center justify-start w-full md:p-8 p-[16px] xl:bg-black bg-white rounded-md xl:bg-opacity-30  bg-opacity-5 gap-[16px]">
           <div className="w-full text-left">
@@ -79,8 +78,8 @@ const Detail = () => {
                 <PercentCircleIcon />
               </div>
               <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center">
-                <p className="text-[#2CE6FF] text-[25px] font-extrabold">
-                  {percent.toFixed(2)}
+                <p className="text-[#2CE6FF] text-[22px] font-extrabold">
+                  {percent.toFixed(1)}
                 </p>
                 <p className="text-[#2CE6FF] text-[10px] uppercase font-bold">
                   percent
@@ -101,7 +100,7 @@ const Detail = () => {
         </div>
       </div>
       <div className="flex items-center justify-center w-full">
-        <img src="/imgs/boxes.png" alt="" />
+        <img src="/imgs/homebox.png" alt="" />
       </div>
     </div>
   );

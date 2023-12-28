@@ -66,22 +66,22 @@ const Stake = () => {
             <p className="font-bold text-white uppercase text-[16px]">
               next reward
             </p>
-            <p className="font-bold text-white uppercase text-[16px]">3 days</p>
+            <p className="font-bold text-white uppercase text-[16px]">7 days</p>
           </div>
           <ProgressBar
             percent={
               Math.floor(
-                ((currentTimestamp - userLastClaimedTime) * 100) / Number(250)
+                ((currentTimestamp - userLastClaimedTime) * 100) / Number(60480)
               ) > 100
                 ? 100
                 : Math.floor(
                     ((currentTimestamp - userLastClaimedTime) * 100) /
-                      Number(250)
+                      Number(60480)
                   ) < 0
                 ? 0
                 : Math.floor(
                     ((currentTimestamp - userLastClaimedTime) * 100) /
-                      Number(250)
+                      Number(60480)
                   )
             }
           />

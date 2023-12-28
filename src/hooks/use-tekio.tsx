@@ -1,7 +1,7 @@
 import { getContract } from "wagmi/actions";
 import { Abi } from "viem";
 
-import { write } from "./utils";
+import { write, read } from "./utils";
 import {
   DEFAULT_GAS,
   DEFAULT_GAS_PRICE,
@@ -14,15 +14,12 @@ import NFTCONTRACT_ABI from "../../public/abis/nftContractABI.json";
 export function useTekio() {
   const getApprovedState = async (wallet: string, stakingAddr: string) => {
     try {
-      const contract: any = getContract({
+      return await read({
         address: TEKINFT_MINTCONTRACT_ADDR as `0x${string}`,
         abi: NFTCONTRACT_ABI as Abi,
-      });
-
-      const res = await contract.read.isApprovedForAll({
+        functionName: "isApprovedForAll",
         args: [wallet, stakingAddr],
       });
-      return res;
     } catch (error) {
       return { isError: true, msg: error };
     }
@@ -78,15 +75,12 @@ export function useTekio() {
 
   const tokenClaimedAmount = async (address: string) => {
     try {
-      const contract: any = getContract({
+      return await read({
         address: STAKINGCONTRACT_ADDR as `0x${string}`,
         abi: STAKINGCONTRACT_ABI as Abi,
-      });
-
-      const res = await contract.read.tokenClaimedAmount({
+        functionName: "tokenClaimedAmount",
         args: [address],
       });
-      return res;
     } catch (error) {
       return { isError: true, msg: error };
     }
@@ -175,8 +169,6 @@ export function useTekio() {
         abi: NFTCONTRACT_ABI as Abi,
         functionName: "setApprovalForAll",
         args: [STAKINGCONTRACT_ADDR, true],
-        gas: DEFAULT_GAS,
-        gasPrice: DEFAULT_GAS_PRICE,
       });
     } catch (e) {
       console.log("error", e);
@@ -191,8 +183,6 @@ export function useTekio() {
         abi: STAKINGCONTRACT_ABI as Abi,
         functionName: "stakeNFT",
         args: [nfts],
-        gas: DEFAULT_GAS,
-        gasPrice: DEFAULT_GAS_PRICE,
       });
     } catch (e) {
       console.log("error", e);
@@ -207,8 +197,6 @@ export function useTekio() {
         abi: STAKINGCONTRACT_ABI as Abi,
         functionName: "unstakeNFT",
         args: [nfts],
-        gas: DEFAULT_GAS,
-        gasPrice: DEFAULT_GAS_PRICE,
       });
     } catch (e) {
       console.log("error", e);

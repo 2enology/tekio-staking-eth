@@ -12,6 +12,8 @@ import {
   argentWallet,
   trustWallet,
   ledgerWallet,
+  phantomWallet,
+  coinbaseWallet,
 } from "@rainbow-me/rainbowkit/wallets";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet, polygon, goerli, polygonMumbai } from "wagmi/chains";
@@ -24,21 +26,16 @@ import ProgressBar from "../components/progressBar";
 import { Layout } from "../components/Layout/layout";
 import GetNFTDataProvider from "../contexts/NFTDataContext";
 import { ToastContainer } from "react-toastify";
-import { PROJECT_ID } from "../config";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [
-    goerli,
-    polygon,
-    ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === "true" ? [goerli] : []),
-  ],
+  [polygon],
   [publicProvider()]
 );
 
-const projectId = PROJECT_ID;
+const projectId = "46beb8085b8e1976f43a3dea3aaecf33";
 
 const { wallets } = getDefaultWallets({
-  appName: "RainbowKit demo",
+  appName: "RainbowKit",
   projectId,
   chains,
 });
@@ -55,6 +52,7 @@ const connectors = connectorsForWallets([
       argentWallet({ projectId, chains }),
       trustWallet({ projectId, chains }),
       ledgerWallet({ projectId, chains }),
+      phantomWallet({ chains }),
     ],
   },
 ]);

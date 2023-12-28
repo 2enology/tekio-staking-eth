@@ -19,7 +19,7 @@ export type GetNFTDataContextValue = {
   stakedNFTs: WalletNFTDatas[] | undefined;
   walletNFTs: WalletNFTDatas[] | undefined;
   getDataLoadingState: boolean;
-  isApprovedAllState: boolean;
+  isApprovedAllState: boolean | unknown;
   boxClaimableState: boolean;
   tokenLaunchedState: boolean;
   userLastClaimedTime: number;

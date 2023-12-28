@@ -7,10 +7,10 @@ import {
   WalletNFTDatas,
 } from "../components/DataTypes";
 import {
-  GOERLI_CHAIN,
   IPFS_BASE_URL,
   IPFS_DATA_URL,
   MORALIS_API_KEY,
+  POLYGON_CHAIN,
   STAKINGCONTRACT_ADDR,
   TEKINFT_MINTCONTRACT_ADDR,
 } from "../config";
@@ -61,7 +61,9 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
   } = useTekio();
 
   const [getDataLoadingState, setGetDataLoadingState] = useState(false);
-  const [isApprovedAllState, setIsApprovedAllState] = useState(false);
+  const [isApprovedAllState, setIsApprovedAllState] = useState<
+    boolean | unknown
+  >(false);
   const [boxClaimableState, setBoxClaimableState] = useState(false);
   const [tokenLaunchedState, setTokenLaunchedState] = useState(false);
   const [userLastClaimedTime, setUserLastClaimedTime] = useState<number>(0);
@@ -81,7 +83,7 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
         }
 
         const response = await Moralis.EvmApi.nft.getWalletNFTs({
-          chain: GOERLI_CHAIN,
+          chain: POLYGON_CHAIN,
           format: "decimal",
           tokenAddresses: [TEKINFT_MINTCONTRACT_ADDR],
           mediaItems: false,
@@ -117,7 +119,6 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
     if (address) {
       const data = await getStakedNFTDatas(address);
 
-      console.log("Data", data.isError);
       if (!data.isError) {
         const propertiyArrary = await Promise.all(
           data.map(async (item: number) => {
@@ -125,15 +126,6 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
 
             const cid = data.image.split("//")[1];
             const finalUrl = `${IPFS_BASE_URL}${cid}`;
-
-            // const filteredResults = Object.keys(data.attributes).filter((key) => {
-            //   return (
-            //     data.attributes[key].trait_type === "Hair down" &&
-            //     (data.attributes[key].value.includes("robotic") ||
-            //       data.attributes[key].value.includes("baseball") ||
-            //       data.attributes[key].value.includes("halo"))
-            //   );
-            // });
 
             return {
               tokenId: data.edition,
@@ -154,36 +146,40 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
         address,
         STAKINGCONTRACT_ADDR
       );
+
       setIsApprovedAllState(approveState);
-      const state = await getMyBoxes(address);
       const claimedTokenAmount = await tokenClaimedAmount(address);
 
       setTotalClaimedTokenAmount(
-        Number(
-          parseFloat(
-            ethers.utils.formatEther(claimedTokenAmount.toString())
-          ).toFixed(2)
-        )
-      );
-      const claimableState = await boxClaimable(address);
-      setBoxClaimableState(claimableState);
-      const tokenLaunch = await tokenLaunched();
-      setTokenLaunchedState(tokenLaunch);
-      const lastClaimed = await userLastClaimed(address);
-      setUserLastClaimedTime(Number(lastClaimed));
-      const counts = await totalStaked();
-      setTotalStakedCounts(Number(counts));
-      const propertiyArrary = await Promise.all(
-        state.map(async (item: any) => {
-          const type = await getBoxType(Number(item));
-          return {
-            boxId: Number(item),
-            boxType: Number(type),
-          };
-        })
+        Number(ethers.utils.formatEther(Number(claimedTokenAmount).toString()))
       );
 
-      setBoxCounts(propertiyArrary);
+      const claimableState = await boxClaimable(address);
+      setBoxClaimableState(claimableState);
+
+      const tokenLaunch = await tokenLaunched();
+      setTokenLaunchedState(tokenLaunch);
+
+      const lastClaimed = await userLastClaimed(address);
+      setUserLastClaimedTime(Number(lastClaimed));
+
+      const counts = await totalStaked();
+      setTotalStakedCounts(Number(counts));
+
+      const state = await getMyBoxes(address);
+      if (state.length !== 0) {
+        const propertiyArrary = await Promise.all(
+          state.map(async (item: any) => {
+            const type = await getBoxType(Number(item));
+            return {
+              boxId: Number(item),
+              boxType: Number(type),
+            };
+          })
+        );
+
+        setBoxCounts(propertiyArrary);
+      }
     }
   };
 

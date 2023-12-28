@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Button from "./button";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 import CheckBox from "./checkBox";
 
 type NftCardProps = {
@@ -24,13 +26,26 @@ const NftCard: React.FC<NftCardProps> = ({
         isSelected ? "border-[2px] border-[#2CE6FF]" : ""
       }`}
     >
-      <div className="relative shadow-nftImgShadow min-h-[320px]">
-        <img src={imgUrl} className="relative w-full rounded-md" alt="" />
-        <div className="absolute top-[10px] left-[10px] py-[7px] px-[10px] bg-black bg-opacity-80 rounded-md text-[14px] font-extrabold text-white">
+      <div className="relative shadow-nftImgShadow min-h-[310px]">
+        <div className="absolute z-[12] top-0 left-0 bottom-[6px] right-0">
+          <Skeleton
+            height={"100%"}
+            width={"100%"}
+            baseColor="#454646"
+            borderRadius={"6px"}
+            highlightColor="#313131"
+          />
+        </div>
+        <img
+          src={imgUrl}
+          className="relative z-[13] w-full rounded-md bottom-0"
+          alt=""
+        />
+        <div className="absolute top-[10px] left-[10px] py-[7px] px-[10px] bg-black bg-opacity-80 rounded-md text-[14px] font-extrabold text-white z-[13]">
           #{tokenId}
         </div>
       </div>
-      <div className="flex items-center justify-end w-full p-[20px] absolute right-3">
+      <div className="flex items-center justify-end w-full p-[20px] absolute right-3 z-[13]">
         {/* <Button type={type} /> */}
         <CheckBox
           isSelected={isSelected}

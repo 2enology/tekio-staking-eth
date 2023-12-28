@@ -67,10 +67,10 @@ const Header = () => {
       </div>
       {showMenu && (
         <div className="fixed top-0 bottom-0 left-0 right-0 flex items-center justify-start w-full bg-black bg-opacity-80 backdrop-blur-md z-[9999] flex-col animate__animated animate__fadeIn animate__faster  ">
-          <p className="text-white text-[50px] font-bold uppercase mt-[102px]">
+          <p className="text-white text-[50px] font-bold uppercase mt-[72px]">
             Navigation
           </p>
-          <div className="flex flex-col items-center justify-center w-full gap-10 mt-10">
+          <div className="flex flex-col items-center justify-center w-full mt-10 gap-7">
             <Link href={"/"} onClick={() => setShowMenu(false)}>
               <p
                 className={`text-white text-[30px] font-bold uppercase ${
@@ -91,6 +91,7 @@ const Header = () => {
                 stake
               </p>
             </Link>
+            <WalletConnectBtn />
           </div>
           <div className="w-full flex items-center justify-center gap-[20px] mt-[60px]">
             <img src="/imgs/opensea.png" alt="" className="cursor-pointer" />

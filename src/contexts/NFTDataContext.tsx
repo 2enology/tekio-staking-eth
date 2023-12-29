@@ -92,15 +92,22 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
 
         const propertiyArrary = await Promise.all(
           response.raw.result.map(async (item) => {
-            const data = await fetchData(
-              IPFS_DATA_URL + item.token_id + ".json"
-            );
+            const response = await Moralis.EvmApi.nft.getNFTMetadata({
+              chain: POLYGON_CHAIN,
+              format: "decimal",
+              normalizeMetadata: true,
+              mediaItems: false,
+              address: TEKINFT_MINTCONTRACT_ADDR,
+              tokenId: item.token_id,
+            });
 
-            const cid = data.image.split("//")[1];
+            const imgUrl = response?.raw.normalized_metadata?.image;
+
+            const cid = imgUrl?.split("//")[1];
             const finalUrl = `${IPFS_BASE_URL}${cid}`;
 
             return {
-              tokenId: data.edition,
+              tokenId: Number(item.token_id),
               imgUrl: finalUrl,
               isSpecial: false,
             };
@@ -149,24 +156,24 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
 
       setIsApprovedAllState(approveState);
       const claimedTokenAmount = await tokenClaimedAmount(address);
+      const claimableState = await boxClaimable(address);
+      const tokenLaunch = await tokenLaunched();
+      const lastClaimed = await userLastClaimed(address);
+      const counts = await totalStaked();
+      const state = await getMyBoxes(address);
 
       setTotalClaimedTokenAmount(
         Number(ethers.utils.formatEther(Number(claimedTokenAmount).toString()))
       );
 
-      const claimableState = await boxClaimable(address);
       setBoxClaimableState(claimableState);
 
-      const tokenLaunch = await tokenLaunched();
       setTokenLaunchedState(tokenLaunch);
 
-      const lastClaimed = await userLastClaimed(address);
       setUserLastClaimedTime(Number(lastClaimed));
 
-      const counts = await totalStaked();
       setTotalStakedCounts(Number(counts));
 
-      const state = await getMyBoxes(address);
       if (state.length !== 0) {
         const propertiyArrary = await Promise.all(
           state.map(async (item: any) => {

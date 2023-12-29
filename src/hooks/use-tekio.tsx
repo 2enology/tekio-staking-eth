@@ -14,12 +14,14 @@ import NFTCONTRACT_ABI from "../../public/abis/nftContractABI.json";
 export function useTekio() {
   const getApprovedState = async (wallet: string, stakingAddr: string) => {
     try {
-      return await read({
+      const contract: any = getContract({
         address: TEKINFT_MINTCONTRACT_ADDR as `0x${string}`,
         abi: NFTCONTRACT_ABI as Abi,
-        functionName: "isApprovedForAll",
+      });
+      const res = await contract.read.isApprovedForAll({
         args: [wallet, stakingAddr],
       });
+      return res;
     } catch (error) {
       return { isError: true, msg: error };
     }
@@ -211,8 +213,6 @@ export function useTekio() {
         abi: STAKINGCONTRACT_ABI as Abi,
         functionName: "reedeemBox",
         args: [id],
-        gas: DEFAULT_GAS,
-        gasPrice: DEFAULT_GAS_PRICE,
       });
     } catch (e) {
       console.log("error", e);
@@ -227,8 +227,6 @@ export function useTekio() {
         abi: STAKINGCONTRACT_ABI as Abi,
         functionName: "claimBox",
         args: [],
-        gas: DEFAULT_GAS,
-        gasPrice: DEFAULT_GAS_PRICE,
       });
     } catch (e) {
       console.log("error", e);

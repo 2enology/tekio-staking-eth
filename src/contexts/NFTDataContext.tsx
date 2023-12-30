@@ -129,9 +129,18 @@ const GetNFTDataProvider: React.FC<GetNFTDataProviderProps> = ({
       if (!data.isError) {
         const propertiyArrary = await Promise.all(
           data.map(async (item: number) => {
-            const data = await fetchData(IPFS_DATA_URL + item + ".json");
+            const response = await Moralis.EvmApi.nft.getNFTMetadata({
+              chain: POLYGON_CHAIN,
+              format: "decimal",
+              normalizeMetadata: true,
+              mediaItems: false,
+              address: TEKINFT_MINTCONTRACT_ADDR,
+              tokenId: item.toString(),
+            });
 
-            const cid = data.image.split("//")[1];
+            const imgUrl = response?.raw.normalized_metadata?.image;
+
+            const cid = imgUrl?.split("//")[1];
             const finalUrl = `${IPFS_BASE_URL}${cid}`;
 
             return {
